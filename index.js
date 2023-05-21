@@ -1,3 +1,34 @@
+// const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
+
+// const ipCallback = (error, ip) => {
+//   if (error) {
+//     console.log("It didn't work!", error);
+//     return;
+//   }
+
+//   console.log('IP address:', ip);
+
+//   fetchCoordsByIP(ip, (error, coordinates) => {
+//     if (error) {
+//       console.log("It didn't work!", error);
+//       return;
+//     }
+
+//     console.log('It worked! Returned coordinates:', coordinates);
+
+//     fetchISSFlyOverTimes(coordinates, (error, flyoverTimes) => {
+//       if (error) {
+//         console.log('Error fetching ISS flyover times:', error);
+//         return;
+//       }
+
+//       console.log('It worked! Returned flyover times:', flyoverTimes);
+//     });
+//   });
+// };
+
+// fetchMyIP(ipCallback);
+
 const { nextISSTimesForMyLocation } = require('./iss');
 
 const printPassTimes = function(passTimes) {
@@ -15,7 +46,7 @@ nextISSTimesForMyLocation((error, passTimes) => {
     return;
   }
 
-  console.log("Pass Times:", passTimes);
   printPassTimes(passTimes);
 });
 
+module.exports = { nextISSTimesForMyLocation };
